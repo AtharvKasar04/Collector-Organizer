@@ -3,6 +3,7 @@ const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const userRouter = require("./routes/userRouter");
+const itemRouter = require("./routes/itemRouter");
 
 require("dotenv").config();
 
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/user', userRouter);
+app.use('/item', itemRouter);
 
 const PORT = process.env.PORT || 4000;
 
