@@ -1,6 +1,6 @@
 const userModel = require("../models/UserModel");
 const bcrypt = require("bcrypt");
-const jwt = require('jsonwebtoken');
+const { generateToken } = require("../utils/generateToken");
 
 module.exports.registerUser = async (req, res) => {
     let { username, name, email, password } = req.body;
@@ -27,5 +27,25 @@ module.exports.registerUser = async (req, res) => {
                 res.status(201).send("User created successfully!");
             }
         })
+    })
+}
+
+module.exports.loginUser = async (req, res) => {
+    let { email, password } = req.body;
+
+    let foundUser = await userModel.findOne({ email });
+    if(!foundUser) return res.status(404).json({ message: "Email or Password is invalid. Please try again later" });
+
+    bcrypt.compare(password, foundUser.password, function(err, result){
+        if (result){
+            let token = generateToken(foundUser);
+            res.cookie("token", token, {
+                httpOnly: true
+            });
+            res.status(200).json({ message: "You can Login now" });
+        }
+        else{
+            return res.status(401).json({ message: "Email or Password invalid." });
+        }
     })
 }
