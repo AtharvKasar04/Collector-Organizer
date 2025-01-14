@@ -16,6 +16,6 @@ module.exports.createItem = async (req, res) => {
         });
         res.status(201).json(newItem);
     } catch (error) {
-        res.status(500).json({ message: "Error creatint Item", error: error.message });
+        res.status(500).json({ message: "Error creating Item", error: error.message });
     }
 };
