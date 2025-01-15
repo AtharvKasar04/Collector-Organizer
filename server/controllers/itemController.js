@@ -59,3 +59,14 @@ module.exports.editItem = async (req, res) => {
         res.status(500).json({ message: "Error updating item", error: error.message });
     }
 };
+
+module.exports.fetchUserCollections = async (req, res) => {
+    const userId = req.user.id;
+
+    try {
+        const items = await collections.find({ createdBy: userId });
+        res.status(200).json(items);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching collections", error: error.message });
+    }
+};
