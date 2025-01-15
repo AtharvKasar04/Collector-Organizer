@@ -70,3 +70,19 @@ module.exports.fetchUserCollections = async (req, res) => {
         res.status(500).json({ message: "Error fetching collections", error: error.message });
     }
 };
+
+module.exports.searchByCategory = async (req, res) => {
+    const { category } = req.query; 
+    const userId = req.user.id; 
+
+    try {
+        const items = await collections.find({
+            createdBy: userId,
+            category: { $regex: new RegExp(category, 'i') } 
+        });
+
+        res.status(200).json(items);
+    } catch (error) {
+        res.status(500).json({ message: "Error fetching items by category", error: error.message });
+    }
+};
