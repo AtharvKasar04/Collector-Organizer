@@ -4,6 +4,10 @@ const collectionSchema = mongoose.Schema({
     title: String,
     description: String,
     category: String,
+    yearOfManufacture: String,
+    purchasePrice: String,
+    purchaseDate: String,
+    rarity: String,
     tags: [String],
     imageUrl: String,
     createdBy: {
