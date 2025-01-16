@@ -1,22 +1,41 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import "../assets/styles/Home.css"
 
 function Home() {
-  return (
-    <div className='homeContainer'>
-      <div className="heading">Welcome to Collectory</div>
+    return (
+        <div className='homeContainer'>
 
-      <div className="paragraph">Organize, Manage and Showcase Your Collection like never before</div>
+            <div className="backgroundElement" id='BE1'></div>
+            <div className="backgroundElement" id='BE2'></div>
 
-      <form action="" className='loginForm'>
-        <input type="text" placeholder='email' id='loginEmail'/>
-        <input type="password" name="" id="loginPassword" placeholder='password'/>
-        <button type="submit" className='loginButton'>Sign in</button>
-      </form>
+            <div className="heading">Welcome to Collectory</div>
 
-      <p>Don't have an account? link <Link id='link-SignUp'>Sign up</Link> </p>
-    </div>
-  )
+            <div className="midContainer">
+
+                <div className="paragraph">Organize, Manage and Showcase Your Collection like never before</div>
+
+                <div className="loginContainer">
+
+                    <h3>Login</h3>
+                    <form action="" className='loginForm'>
+                        <div className="email">
+                            <label htmlFor="login-email">Email</label>
+                            <input type="text" placeholder='' id='loginEmail' name='login-email' />
+                        </div>
+
+                        <div className="password">
+                            <label htmlFor="login-pass">Password</label>
+                            <input type="password" name="login-pass" id="loginPassword" placeholder='' />
+                        </div>
+                        <button type="submit" className='loginButton'>Sign in</button>
+                    </form>
+
+                    <p>Don't have an account? <Link id='link-SignUp'>Sign up</Link> </p>
+                </div>
+            </div>
+        </div>
+    )
 }
 
 export default Home
