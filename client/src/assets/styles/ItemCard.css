@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.itemCard{
+    /* border: 2px solid red; */
+    width: 20%;
+    max-width: 400px;
+    text-align: center;
+    background-color: #EFEDED;
+    border-radius: 14px;
+    padding: 8px;
+}
+
+.itemCardIMG{
+    width: 100%;
+    border-radius: 10px;
+}
+
+.cardInfo{
+    /* border: 2px solid red; */
+    text-align: left;
+    margin: 4px;
+}
+
+.cardTitle{
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #1356FF;
+}
+
+.key{
+    font-weight: 500;
+    font-size: 1rem;
+    color: gray;
+}
+
+.key-val{
+    color: black;
+    font-weight: bold;
+}
+
+.tagsVal{
+    background-color: #00B978;
+    color: white;
+    padding: 2px 6px;
+    font-size: 0.8rem;
+    border-radius: 4px;
+}
+
+.itemEditButton{
+    background-color: #2F3645;
+    padding: 12px 20px;
+    width: 80%;
+    border-radius: 8px;
+    margin: 8px 0px;
+    outline: none;
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.removeItemButton{
+    background: transparent;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    margin: 8px 0px;
+    cursor: pointer;
+    transition: 0.1s ease-in;
+}
+
+.removeItemButton:hover{
+    letter-spacing: 1px;
+}

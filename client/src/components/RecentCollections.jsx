@@ -1,5 +1,6 @@
 import React from 'react'
 import ItemCard from './ItemCard'
+import "../assets/styles/RecentCollections.css"
 
 function RecentCollections() {
     return (
