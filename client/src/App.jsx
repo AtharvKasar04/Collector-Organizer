@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { useState } from 'react'
 import Home from './components/Home'
+import SignUp from './components/SignUp'
 
 function App() {
 
@@ -9,6 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/sign-up' element={<SignUp />} />
         </Routes>
       </BrowserRouter>
     </>

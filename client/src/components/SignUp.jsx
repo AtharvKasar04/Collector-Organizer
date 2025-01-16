@@ -17,8 +17,18 @@ function Home() {
 
                 <div className="loginContainer">
 
-                    <h3>Login</h3>
+                    <h3>Sign Up</h3>
                     <form action="" className='loginForm'>
+                        <div className="label-input">
+                            <label htmlFor="login-username">Username</label>
+                            <input type="text" placeholder='' id='loginUsername' name='login-username' />
+                        </div>
+
+                        <div className="label-input">
+                            <label htmlFor="login-name">Name</label>
+                            <input type="text" placeholder='' id='loginName' name='login-name' />
+                        </div>
+
                         <div className="label-input">
                             <label htmlFor="login-email">Email</label>
                             <input type="text" placeholder='' id='loginEmail' name='login-email' />
@@ -28,10 +38,10 @@ function Home() {
                             <label htmlFor="login-pass">Password</label>
                             <input type="password" name="login-pass" id="loginPassword" placeholder='' />
                         </div>
-                        <button type="submit" className='loginButton'>Sign in</button>
+                        <button type="submit" className='loginButton'>Sign up</button>
                     </form>
 
-                    <p>Don't have an account? <Link to='/sign-up' id='link-SignUp'>Sign up</Link> </p>
+                    <p>Already have an account? <Link to='/' id='link-SignUp'>Log in</Link> </p>
                 </div>
             </div>
         </div>

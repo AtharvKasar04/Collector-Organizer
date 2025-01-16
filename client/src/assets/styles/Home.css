@@ -46,9 +46,9 @@
     justify-content: center;
     align-items: center;
     background: #2F3645;
-    padding: 20px 10px;
+    padding: 20px 12px;
     border-radius: 10px;
-    width: 35%;
+    width: 40%;
     outline: 5px solid #FFF7D6;
 }
 
@@ -75,6 +75,7 @@
     color: white;
     width: 100%;
     font-size: 1rem;
+    box-sizing: border-box;
 }
 
 .loginButton{
@@ -119,14 +120,10 @@
     right: 0;
 }
 
-.email{
+.label-input{
     text-align: left;
     margin: 8px 0px;
-}
-
-.password{
-    text-align: left;
-    margin: 8px 0px;
+    width: 100%;
 }
 
 label{
