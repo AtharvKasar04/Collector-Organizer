@@ -21,22 +21,22 @@ function Home() {
                     <form action="" className='loginForm'>
                         <div className="label-input">
                             <label htmlFor="login-username">Username</label>
-                            <input type="text" placeholder='' id='loginUsername' name='login-username' />
+                            <input type="text" placeholder='' id='login-username' name='login-username' />
                         </div>
 
                         <div className="label-input">
                             <label htmlFor="login-name">Name</label>
-                            <input type="text" placeholder='' id='loginName' name='login-name' />
+                            <input type="text" placeholder='' id='login-name' name='login-name' />
                         </div>
 
                         <div className="label-input">
                             <label htmlFor="login-email">Email</label>
-                            <input type="text" placeholder='' id='loginEmail' name='login-email' />
+                            <input type="text" placeholder='' id='login-email' name='login-email' />
                         </div>
 
                         <div className="label-input">
                             <label htmlFor="login-pass">Password</label>
-                            <input type="password" name="login-pass" id="loginPassword" placeholder='' />
+                            <input type="password" name="login-pass" id="login-password" placeholder='' />
                         </div>
                         <button type="submit" className='loginButton'>Sign up</button>
                     </form>

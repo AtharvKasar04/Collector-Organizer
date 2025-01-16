@@ -26,7 +26,7 @@ function Home() {
 
                         <div className="label-input">
                             <label htmlFor="login-pass">Password</label>
-                            <input type="password" name="login-pass" id="loginPassword" placeholder='' />
+                            <input type="password" name="login-pass" id="login-password" placeholder='' />
                         </div>
                         <button type="submit" className='loginButton'>Sign in</button>
                     </form>
