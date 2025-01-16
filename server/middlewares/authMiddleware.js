@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const userModel = require('../models/UserModel'); // Adjust the path as needed
+const userModel = require('../models/UserModel'); 
 
 module.exports = async (req, res, next) => {
     const token = req.cookies.token || req.headers['authorization'];
@@ -9,7 +9,7 @@ module.exports = async (req, res, next) => {
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const email = decoded.email; // Extract the email from the token
+        const email = decoded.email;
 
         if (!email) {
             return res.status(400).json({ message: "Invalid token: Email not found." });
@@ -20,7 +20,7 @@ module.exports = async (req, res, next) => {
             return res.status(404).json({ message: "User not found." });
         }
 
-        req.user = { id: user._id, email: user.email }; // Attach user info to the request
+        req.user = { id: user._id, email: user.email }; 
         next();
     } catch (ex) {
         res.status(400).json({ message: "Invalid token." });
