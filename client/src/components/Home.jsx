@@ -21,7 +21,7 @@ function Home() {
                     <form action="" className='loginForm'>
                         <div className="label-input">
                             <label htmlFor="login-email">Email</label>
-                            <input type="text" placeholder='' id='loginEmail' name='login-email' />
+                            <input type="text" placeholder='' id='login-email' name='login-email' />
                         </div>
 
                         <div className="label-input">
