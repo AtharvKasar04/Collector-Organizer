@@ -12,6 +12,7 @@ function RecentCollections() {
 
                 <div className="cardsRow">
                     <ItemCard />
+                    <ItemCard />
                 </div>
             </div>
         </div>
