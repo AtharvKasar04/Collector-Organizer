@@ -1,11 +1,12 @@
 import React from 'react'
 import ItemCard from './ItemCard'
 import "../assets/styles/RecentCollections.css"
+import Navbar from './Navbar'
 
 function RecentCollections() {
     return (
         <div className="recentCollectionsContainer">
-            Navbar
+            <Navbar />
             <div className="yourCollection">
                 <h2 className='yourCollectionHeading'>Your Collection</h2>
                 <h5 className='yourCollectionSubHeading'>Your most recent additions</h5>
