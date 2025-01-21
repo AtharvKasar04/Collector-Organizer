@@ -18,9 +18,7 @@ function Navbar() {
 
                 <div className="navLinks">
                     <Link to='/recent-collections' className='nav-link'>Home</Link>
-                    <Link to='/recent-collections' className='nav-link'>Collection</Link>
-                    <Link to='/recent-collections' className='nav-link'>Marketplace</Link>
-                    <Link to='/recent-collections' className='nav-link'>Contribute</Link>
+                    <Link to='/collection' className='nav-link'>Collection</Link>
                 </div>
 
                 <button className='addNewButton'>Add new</button>
