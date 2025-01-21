@@ -7,14 +7,20 @@ function RecentCollections() {
         <div className="recentCollectionsContainer">
             Navbar
             <div className="yourCollection">
-                <h2>Your Collection</h2>
-                <h5>Your most recent additions</h5>
+                <h2 className='yourCollectionHeading'>Your Collection</h2>
+                <h5 className='yourCollectionSubHeading'>Your most recent additions</h5>
 
                 <div className="cardsRow">
                     <ItemCard />
                     <ItemCard />
+                    <ItemCard />
+                    <ItemCard />
                 </div>
             </div>
+
+            <div className="breakerLine"></div>
+
+            <button className='viewCollectionButton'>View entire Collection</button>
         </div>
     )
 }

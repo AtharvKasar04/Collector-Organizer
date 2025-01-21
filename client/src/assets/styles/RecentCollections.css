@@ -8,9 +8,48 @@
     background-color: #2F3645;
     width: 100%;
     height: 100vh;
+    text-align: center;
+}
+
+.yourCollection{
+    text-align: center;
 }
 
 .cardsRow{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.yourCollectionHeading{
+    font-size: 2rem;
+    color: #FFFFFF;
+}
+
+.yourCollectionSubHeading{
+    font-size: 1rem;
+    font-weight: 500;
+    color: gray;
+}
+
+.viewCollectionButton{
+    outline: none;
+    background-color: white;
+    padding: 15px 30px;
+    font-weight: 800;
+    border-radius: 8px;
+    width: 20%;
+    margin: 0px auto;
+    box-shadow: 2px 2px 1px #00B978;
+    border: none;
+    cursor: pointer;
+}
+
+.breakerLine{
+    height: 2px;
+    width: 70%;
+    background-color: #5FB7FF;
+    border-radius: 2px;
+    margin: 20px auto;
 }
