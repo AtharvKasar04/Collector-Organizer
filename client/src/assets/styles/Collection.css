@@ -88,3 +88,12 @@
     color: white;
     padding: 5px;
 }
+
+.itemCardsSection{
+    width: 90%;
+    margin: 0px auto;
+    /* border: 2px solid red; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

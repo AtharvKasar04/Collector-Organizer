@@ -42,6 +42,8 @@ function Collection() {
 
             <div className="itemCardsSection">
                 <ItemCard />
+                <ItemCard />
+                <ItemCard />
             </div>
         </div>
     )
