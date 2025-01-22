@@ -1,8 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import "../assets/styles/ItemCard.css"
 import RAM from "../assets/images/Ram1500.jpg"
 
 function ItemCard({ image, title, category, yearOfManufacture, purchasePrice, purchaseDate, rarity, tags }) {
+
+    const navigate = useNavigate();
+
+    const handleEdit = () => {
+        navigate(`/edit-item`)
+    }
+
     return (
         <div className="itemCard">
             <img className='itemCardIMG' src={RAM} alt="" />
@@ -23,7 +31,7 @@ function ItemCard({ image, title, category, yearOfManufacture, purchasePrice, pu
                 <p className="tags-labels key">Tags/Labels: <span className='tagsVal key-val'>THEN AND NOW</span> </p>
             </div>
 
-            <button className='itemEditButton'>Edit</button>
+            <button className='itemEditButton' onClick={handleEdit}>Edit</button>
 
             <button className='removeItemButton'>Remove from Collection</button>
         </div>

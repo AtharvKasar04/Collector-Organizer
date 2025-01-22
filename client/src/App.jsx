@@ -3,6 +3,7 @@ import Home from './components/Home'
 import SignUp from './components/SignUp'
 import RecentCollections from './components/RecentCollections'
 import Collection from './components/Collection'
+import EditItem from './components/EditItem'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <Route path='/sign-up' element={<SignUp />} />
           <Route path='/recent-collections' element={<RecentCollections />} />
           <Route path='/collection' element={<Collection />} />
+          <Route path='/edit-item' element={<EditItem />} />
         </Routes>
       </BrowserRouter>
     </>
