@@ -2,6 +2,7 @@ import React from 'react'
 import ItemCard from './ItemCard'
 import "../assets/styles/RecentCollections.css"
 import Navbar from './Navbar'
+import { Link } from 'react-router-dom'
 
 function RecentCollections() {
     return (
@@ -21,7 +22,7 @@ function RecentCollections() {
 
             <div className="breakerLine"></div>
 
-            <button className='viewCollectionButton'>View entire Collection</button>
+            <button className='viewCollectionButton'><Link to='/collection' >View entire Collection</Link></button>
         </div>
     )
 }
