@@ -57,24 +57,24 @@
 
 @media (max-width: 1024px) {
     .yourCollectionHeading {
-        font-size: 1.8rem; /* Scale down heading */
+        font-size: 1.8rem; 
     }
 
     .yourCollectionSubHeading {
-        font-size: 0.9rem; /* Scale down subheading */
+        font-size: 0.9rem; 
     }
 
     .viewCollectionButton {
-        width: 30%; /* Adjust button width */
-        padding: 12px 24px; /* Adjust padding for smaller buttons */
+        width: 30%; 
+        padding: 12px 24px; 
     }
 
     .breakerLine {
-        width: 80%; /* Adjust line width */
+        width: 80%;
     }
 }
 
-/* Small screens (max-width: 768px) */
+
 @media (max-width: 768px) {
     .yourCollectionHeading {
         font-size: 1.6rem;
@@ -89,7 +89,7 @@
     }
 
     .cardsRow {
-        gap: 15px; /* Adjust spacing between cards */
+        gap: 15px; 
     }
 
     .breakerLine {
@@ -97,7 +97,7 @@
     }
 }
 
-/* Extra small screens (max-width: 480px) */
+
 @media (max-width: 480px) {
     .yourCollectionHeading {
         font-size: 1.4rem;
@@ -108,7 +108,7 @@
     }
 
     .viewCollectionButton {
-        width: 60%; /* Make the button take more space */
+        width: 60%; 
         padding: 10px 20px;
     }
 
