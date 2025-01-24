@@ -7,8 +7,9 @@
 .recentCollectionsContainer{
     background-color: #2F3645;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     text-align: center;
+    overflow-x: hidden;
 }
 
 .yourCollection{
@@ -52,4 +53,70 @@
     background-color: #5FB7FF;
     border-radius: 2px;
     margin: 20px auto;
+}
+
+@media (max-width: 1024px) {
+    .yourCollectionHeading {
+        font-size: 1.8rem; /* Scale down heading */
+    }
+
+    .yourCollectionSubHeading {
+        font-size: 0.9rem; /* Scale down subheading */
+    }
+
+    .viewCollectionButton {
+        width: 30%; /* Adjust button width */
+        padding: 12px 24px; /* Adjust padding for smaller buttons */
+    }
+
+    .breakerLine {
+        width: 80%; /* Adjust line width */
+    }
+}
+
+/* Small screens (max-width: 768px) */
+@media (max-width: 768px) {
+    .yourCollectionHeading {
+        font-size: 1.6rem;
+    }
+
+    .yourCollectionSubHeading {
+        font-size: 0.8rem;
+    }
+
+    .viewCollectionButton {
+        width: 40%;
+    }
+
+    .cardsRow {
+        gap: 15px; /* Adjust spacing between cards */
+    }
+
+    .breakerLine {
+        width: 90%;
+    }
+}
+
+/* Extra small screens (max-width: 480px) */
+@media (max-width: 480px) {
+    .yourCollectionHeading {
+        font-size: 1.4rem;
+    }
+
+    .yourCollectionSubHeading {
+        font-size: 0.7rem;
+    }
+
+    .viewCollectionButton {
+        width: 60%; /* Make the button take more space */
+        padding: 10px 20px;
+    }
+
+    .cardsRow {
+        gap: 10px;
+    }
+
+    .breakerLine {
+        width: 95%;
+    }
 }
