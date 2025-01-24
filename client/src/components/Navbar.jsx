@@ -1,13 +1,26 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../assets/styles/Navbar.css";
+import api from "../api/api";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const handleLogout = async () => {
+    let response = await api.post('/user/logout', {}, { withCredentials: true });
+
+    if (response.status === 200) {
+        alert("Logging out");
+        navigate('/');
+    } else {
+        alert("error logging out!");
+    }
+  }
 
   return (
     <div className="navbar">
@@ -33,7 +46,7 @@ function Navbar() {
           </Link>
         </div>
 
-        <button className="logoutButton">Logout</button>
+        <button className="logoutButton" onClick={handleLogout}>Logout</button>
 
         <div className="profile">
           <div className="text">

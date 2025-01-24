@@ -1,8 +1,36 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import "../assets/styles/Home.css"
+import api from '../api/api';
 
 function Home() {
+
+    const [username, setUsername] = useState('');
+    const [name, setname] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    const handleFormSubmitSignUp = async (e) => {
+        e.preventDefault();
+
+        try {
+            let response = await api.post(`/user/register`, { username, name, email, password }, { withCredentials: true });
+
+            if (response.status === 201) {
+                navigate('/');
+            }
+        } catch (err) {
+            if (err.response && err.response.status === 401) {
+                alert(err.response.data.message || "User already registerd");
+            }
+            else {
+                alert(`Error: ${err.message}`);
+            }
+        }
+    }
+
+
     return (
         <div className='homeContainer'>
 
@@ -18,25 +46,25 @@ function Home() {
                 <div className="loginContainer">
 
                     <h3>Sign Up</h3>
-                    <form action="" className='loginForm'>
+                    <form onSubmit={handleFormSubmitSignUp} className='loginForm'>
                         <div className="label-input">
                             <label htmlFor="login-username">Username</label>
-                            <input type="text" placeholder='' id='login-username' name='login-username' />
+                            <input type="text" placeholder='' id='login-username' name='login-username' required='true' autoComplete='off' onChange={(e) => { setUsername(e.target.value) }}/>
                         </div>
 
                         <div className="label-input">
                             <label htmlFor="login-name">Name</label>
-                            <input type="text" placeholder='' id='login-name' name='login-name' />
+                            <input type="text" placeholder='' id='login-name' name='login-name' required='true' autoComplete='off' onChange={(e) => { setname(e.target.value) }}/>
                         </div>
 
                         <div className="label-input">
                             <label htmlFor="login-email">Email</label>
-                            <input type="text" placeholder='' id='login-email' name='login-email' />
+                            <input type="text" placeholder='' id='login-email' name='login-email' required='true' autoComplete='off' onChange={(e) => { setEmail(e.target.value) }}/>
                         </div>
 
                         <div className="label-input">
                             <label htmlFor="login-pass">Password</label>
-                            <input type="password" name="login-pass" id="login-password" placeholder='' />
+                            <input type="password" name="login-pass" id="login-password" placeholder='' required='true' autoComplete='off' onChange={(e) => { setPassword(e.target.value) }}/>
                         </div>
                         <button type="submit" className='loginButton'>Sign up</button>
                     </form>
