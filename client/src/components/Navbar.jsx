@@ -32,6 +32,9 @@ function Navbar() {
             Collection
           </Link>
         </div>
+
+        <button className="logoutButton">Logout</button>
+
         <div className="profile">
           <div className="text">
             <h5>Atharv Kasar</h5>
