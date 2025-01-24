@@ -34,7 +34,7 @@ module.exports.loginUser = async (req, res) => {
     let { email, password } = req.body;
 
     let foundUser = await userModel.findOne({ email });
-    if(!foundUser) return res.status(404).json({ message: "Email or Password is invalid. Please try again later" });
+    if(!foundUser) return res.status(404).json({ message: "User not found" });
 
     bcrypt.compare(password, foundUser.password, function(err, result){
         if (result){
