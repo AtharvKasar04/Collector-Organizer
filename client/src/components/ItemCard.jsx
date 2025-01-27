@@ -40,9 +40,9 @@ function ItemCard({id, image, title, category, yearOfManufacture, purchasePrice,
             <div className="cardInfo">
                 <h2 className="cardTitle">{title || "No title"}</h2>
 
-                <p className="category key">Category: <span className="categoryVal key-val">Hot Wheels</span> </p>
+                <p className="category key">Category: <span className="categoryVal key-val">{category || "N/A"}</span> </p>
 
-                <p className="YOM key">Year of Manufacture: <span className="yomVal key-val">2024</span> </p>
+                <p className="YOM key">Year of Manufacture: <span className="yomVal key-val">{yearOfManufacture || "N/A"}</span> </p>
 
                 <p className="purchasePrice key">Purchase Price: <span className="purchaseVal key-val">179</span> </p>
 

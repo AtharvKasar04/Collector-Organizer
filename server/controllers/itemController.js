@@ -17,7 +17,7 @@ const upload = multer({ storage });
 module.exports.upload = upload.single('image'); //File upload Middleware
 
 module.exports.createItem = async (req, res) => {
-    let { title, description, category, tags, imageUrl } = req.body;
+    let { title, description, category, yearOfManufacture, purchasePrice, purchaseDate, tags, imageUrl } = req.body;
     const userId = req.user.id;
 
     try {
@@ -27,6 +27,9 @@ module.exports.createItem = async (req, res) => {
             title,
             description,
             category,
+            yearOfManufacture,
+            purchasePrice,
+            purchaseDate,
             tags: tags ? tags.split(',') : [],
             imageUrl,
             createdBy: userId
