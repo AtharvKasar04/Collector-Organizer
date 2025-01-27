@@ -1,16 +1,33 @@
 const collections = require("../models/CollectionItem");
 const userModel = require("../models/UserModel");
+const multer = require("multer");
+const path = require("path");
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads/');
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname) );
+    },
+});
+
+const upload = multer({ storage });
+
+module.exports.upload = upload.single('image'); //File upload Middleware
 
 module.exports.createItem = async (req, res) => {
     let { title, description, category, tags, imageUrl } = req.body;
     const userId = req.user.id;
 
     try {
+        const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
+
         const newItem = await collections.create({
             title,
             description,
             category,
-            tags,
+            tags: tags ? tags.split(',') : [],
             imageUrl,
             createdBy: userId
         });
