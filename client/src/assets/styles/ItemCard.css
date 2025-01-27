@@ -50,6 +50,14 @@
     padding: 2px 6px;
     font-size: 0.8rem;
     border-radius: 4px;
+    margin: 0px 2px;
+}
+
+.tagsContainer {
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 4px; 
+    margin-top: 5px; 
 }
 
 .itemEditButton{
