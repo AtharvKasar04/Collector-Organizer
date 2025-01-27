@@ -16,7 +16,7 @@ function ItemCard({id, image, title, category, yearOfManufacture, purchasePrice,
         if (!confirm) return;
 
         try {
-            await fetch(`http://localhost:4000/delete-item/${id}`, {
+            await fetch(`http://localhost:4000/item/delete-item/${id}`, {
                 method: "DELETE",
                 credentials: "include",
             });
