@@ -16,6 +16,7 @@ function App() {
           <Route path='/recent-collections' element={<RecentCollections />} />
           <Route path='/collection' element={<Collection />} />
           <Route path='/edit-item' element={<EditItem />} />
+          {/* <Route path='/admin' element={<AdminPanel />} /> */}
         </Routes>
       </BrowserRouter>
     </>
