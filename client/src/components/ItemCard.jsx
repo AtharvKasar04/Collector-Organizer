@@ -8,7 +8,20 @@ function ItemCard({ id, image, title, category, yearOfManufacture, purchasePrice
     const navigate = useNavigate();
 
     const handleEdit = () => {
-        navigate(`/edit-item`)
+
+        const item = {
+            _id: id,
+            image,
+            title,
+            category,
+            yearOfManufacture,
+            purchasePrice,
+            purchaseDate,
+            rarity,
+            tags,
+        };
+        
+        navigate(`/edit-item`, { state: { item } });
     }
 
     const handleRemove = async () => {

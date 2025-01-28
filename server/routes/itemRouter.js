@@ -5,7 +5,7 @@ const { createItem, deleteItem, editItem, fetchUserCollections, searchByCategory
 
 router.post("/create-item", authMiddleware, upload, createItem);
 router.delete("/delete-item/:id", authMiddleware, deleteItem);
-router.put("/edit-item/:id", authMiddleware, editItem);
+router.put("/edit-item/:id", authMiddleware, upload, editItem);
 router.get("/fetch-items", authMiddleware, fetchUserCollections);
 router.get("/search", authMiddleware, searchByCategory);
 
