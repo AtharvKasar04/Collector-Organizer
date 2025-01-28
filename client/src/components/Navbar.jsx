@@ -48,13 +48,13 @@ function Navbar() {
 
         <button className="logoutButton" onClick={handleLogout}>Logout</button>
 
-        <div className="profile">
+        {/* <div className="profile">
           <div className="text">
             <h5>Atharv Kasar</h5>
             <button>View Profile</button>
           </div>
           <div className="profileIcon"></div>
-        </div>
+        </div> */}
       </div>
     </div>
   );
