@@ -21,6 +21,7 @@ function Collection() {
     const [loading, setLoading] = useState(false); //loading sathi
     const [filteredCollection, setFilteredCollection] = useState([]);
     const [searchCategory, setSearchCategory] = useState("");
+    const [sortOption, setSortOption] = useState("Latest"); // Default is 'Latest'
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -50,15 +51,20 @@ function Collection() {
     };
 
     useEffect(() => {
-        if (searchCategory === "") {
-            setFilteredCollection(collection);
-        } else {
-            const filtered = collection.filter(item =>
+        let filtered = collection;
+
+        if (searchCategory) {
+            filtered = filtered.filter(item =>
                 item.category.toLowerCase().includes(searchCategory.toLowerCase())
             );
-            setFilteredCollection(filtered);
         }
-    }, [searchCategory, collection]);
+
+        if (sortOption === "Oldest") {
+            filtered = [...filtered].reverse(); // Reverse the array for "Oldest"
+        }
+
+        setFilteredCollection(filtered);
+    }, [searchCategory, collection, sortOption]);
 
     const handleSubmitCollection = async (e) => {
         e.preventDefault();
@@ -194,7 +200,13 @@ function Collection() {
 
                     <label htmlFor="sort-by" className='sort-by-label'>Sort by</label>
 
-                    <select name="sort-by" id="sort-by" className='sort-by'>
+                    <select
+                        name="sort-by"
+                        id="sort-by"
+                        className='sort-by'
+                        value={sortOption}
+                        onChange={(e) => setSortOption(e.target.value)} // Update sort option
+                    >
                         <option value="Latest">Latest</option>
                         <option value="Oldest">Oldest</option>
                     </select>
