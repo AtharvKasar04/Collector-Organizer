@@ -66,6 +66,23 @@ function Collection() {
         setFilteredCollection(filtered);
     }, [searchCategory, collection, sortOption]);
 
+
+    const formatDate = (dateString) => {
+        if (!dateString) return ''; 
+
+        const date = new Date(dateString);
+        const day = date.getDate();
+        const month = date.toLocaleString('default', { month: 'short' }); 
+        const year = date.getFullYear();
+
+        let daySuffix = 'th';
+        if (day === 1 || day === 21 || day === 31) daySuffix = 'st';
+        if (day === 2 || day === 22) daySuffix = 'nd';
+        if (day === 3 || day === 23) daySuffix = 'rd';
+
+        return `${day}${daySuffix} ${month} ${year}`;
+    };
+
     const handleSubmitCollection = async (e) => {
         e.preventDefault();
 
@@ -151,7 +168,7 @@ function Collection() {
                         onChange={handleChange}
                     />
                     <input
-                        type="text"
+                        type="date"
                         placeholder="Purchase date"
                         className="addItem-input"
                         name="purchaseDate"
@@ -228,7 +245,7 @@ function Collection() {
                             category={item.category}
                             yearOfManufacture={item.yearOfManufacture}
                             purchasePrice={item.purchasePrice}
-                            purchaseDate={item.purchaseDate}
+                            purchaseDate={formatDate(item.purchaseDate)}
                             rarity={item.rarity}
                             tags={item.tags}
                             onRemove={fetchUserCollection}

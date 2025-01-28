@@ -16,20 +16,24 @@ function EditItem() {
         purchasePrice: '',
         purchaseDate: '',
         rarity: '',
-        tags: [], 
+        tags: [],
         image: null,
     });
 
     useEffect(() => {
         if (item) {
+            const formattedDate = item.purchaseDate ? new Date(item.purchaseDate) : null;
+
             setFormData({
                 title: item.title || '',
                 productCategory: item.category || '',
                 yearOfManufacture: item.yearOfManufacture || '',
                 purchasePrice: item.purchasePrice || '',
-                purchaseDate: item.purchaseDate || '',
+                purchaseDate: formattedDate && !isNaN(formattedDate.getTime())
+                    ? formattedDate.toISOString().split('T')[0]
+                    : '',
                 rarity: item.rarity || '',
-                tags: Array.isArray(item.tags) ? item.tags : [], 
+                tags: Array.isArray(item.tags) ? item.tags : [],
                 image: null,
             });
         }
@@ -95,7 +99,7 @@ function EditItem() {
                         type="text"
                         placeholder="Enter product name"
                         className="addItem-input"
-                        id="title" 
+                        id="title"
                         value={formData.title}
                         onChange={handleChange}
                     />
@@ -124,7 +128,7 @@ function EditItem() {
                         onChange={handleChange}
                     />
                     <input
-                        type="text"
+                        type="date"
                         placeholder="Purchase date"
                         className="addItem-input"
                         id="purchaseDate"
