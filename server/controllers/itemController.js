@@ -58,7 +58,7 @@ module.exports.deleteItem = async (req, res) => {
 
 module.exports.editItem = async (req, res) => {
     const { id } = req.params; 
-    const { title, description, category, tags, imageUrl } = req.body; 
+    const { title, description, category, tags, imageUrl, rarity, purchaseDate, purchasePrice } = req.body; 
     const userId = req.user.id; 
 
     try {
@@ -70,7 +70,10 @@ module.exports.editItem = async (req, res) => {
         item.title = title || item.title;
         item.description = description || item.description;
         item.category = category || item.category;
+        item.rarity = rarity || item.rarity;
         item.tags = tags || item.tags;
+        item.purchaseDate = purchaseDate || item.purchaseDate;
+        item.purchasePrice = purchasePrice || item.purchasePrice;
         item.imageUrl = imageUrl || item.imageUrl;
         item.updatedAt = Date.now();
 
