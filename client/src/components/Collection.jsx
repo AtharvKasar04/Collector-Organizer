@@ -19,6 +19,8 @@ function Collection() {
 
     const [collection, setCollection] = useState([]); //Fetched items ikde store hotil
     const [loading, setLoading] = useState(false); //loading sathi
+    const [filteredCollection, setFilteredCollection] = useState([]);
+    const [searchCategory, setSearchCategory] = useState("");
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -46,6 +48,17 @@ function Collection() {
             setLoading(false);
         }
     };
+
+    useEffect(() => {
+        if (searchCategory === "") {
+            setFilteredCollection(collection);
+        } else {
+            const filtered = collection.filter(item =>
+                item.category.toLowerCase().includes(searchCategory.toLowerCase())
+            );
+            setFilteredCollection(filtered);
+        }
+    }, [searchCategory, collection]);
 
     const handleSubmitCollection = async (e) => {
         e.preventDefault();
@@ -171,7 +184,13 @@ function Collection() {
                 <h2 className="yourCollectionHeading">Your Collection</h2>
 
                 <div className="yourCollectionElements">
-                    <input type="text" placeholder='Search categories' className='searchCategories' />
+                    <input
+                        type="text"
+                        placeholder="Search categories"
+                        className="searchCategories"
+                        value={searchCategory}
+                        onChange={(e) => setSearchCategory(e.target.value)} // Update search input
+                    />
 
                     <label htmlFor="sort-by" className='sort-by-label'>Sort by</label>
 
@@ -187,8 +206,8 @@ function Collection() {
 
                 {loading ? (
                     <p>Content Load hotay thamb...</p>
-                ) : collection.length > 0 ? (
-                    collection.map((item) => (
+                ) : filteredCollection.length > 0 ? (
+                    filteredCollection.map((item) => (
                         <ItemCard
                             key={item._id}
                             id={item._id}
@@ -204,7 +223,7 @@ function Collection() {
                         />
                     ))
                 ) : (
-                    <p>No items in your collection yet</p>
+                    <p>No items found for the search term</p>
                 )}
             </div>
         </div>
