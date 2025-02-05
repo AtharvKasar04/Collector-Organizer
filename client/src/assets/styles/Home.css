@@ -134,6 +134,10 @@ label{
     font-weight: 600;
 }
 
+#link-SignUp{
+    color: gray;
+}
+
 @media (max-width: 768px) {
     .midContainer {
         flex-direction: column;

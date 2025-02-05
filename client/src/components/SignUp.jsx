@@ -18,6 +18,7 @@ function Home() {
             let response = await api.post(`/user/register`, { username, name, email, password }, { withCredentials: true });
 
             if (response.status === 201) {
+                alert("User registered Successfully You can Login now :)");
                 navigate('/');
             }
         } catch (err) {
