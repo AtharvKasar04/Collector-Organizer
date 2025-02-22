@@ -40,7 +40,9 @@ module.exports.loginUser = async (req, res) => {
         if (result){
             let token = generateToken(foundUser);
             res.cookie("token", token, {
-                httpOnly: true
+                httpOnly: true,
+                secure: true,
+                sameSite: "none",
             });
             res.status(200).json({ message: "You can Login now" });
         }
