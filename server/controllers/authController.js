@@ -58,7 +58,7 @@ module.exports.logoutUser = async (req, res) => {
         httpOnly: true,
         expires: new Date(0),
         path: "/",
-        sameSite: 'strict'
+        sameSite: 'none'
     });
     res.status(200).json({ message: "User logged out successfully!" });
 }
