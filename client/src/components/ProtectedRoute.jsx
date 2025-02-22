@@ -9,7 +9,7 @@ const ProtectedRoute = () => {
     const verifyAuth = async () => {
       try {
         const response = await api.get('/user/verify-token', { withCredentials: true });
-        setIsAuthenticated(response.status === 200);
+        setIsAuthenticated(true);
       } catch {
         setIsAuthenticated(false);
       }
