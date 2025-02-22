@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
-import api from '../api/api';
+import { useEffect, useState } from "react";
+import { Navigate, Outlet } from "react-router-dom";
+import api from "../api/api";
 
 const ProtectedRoute = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(null);
@@ -8,7 +8,7 @@ const ProtectedRoute = () => {
   useEffect(() => {
     const verifyAuth = async () => {
       try {
-        const response = await api.get('/user/verify-token', { withCredentials: true });
+        await api.get("/user/verify-token");
         setIsAuthenticated(true);
       } catch {
         setIsAuthenticated(false);

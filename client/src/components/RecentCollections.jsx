@@ -12,7 +12,7 @@ function RecentCollections() {
     useEffect(() => {
         const fetchRecentCollections = async () => {
             try {
-                const response = await api.get('/item/fetch-items', { withCredentials: true });
+                const response = await api.get('/item/fetch-items');
                 // console.log(response);
                 if (response.status === 200) {
                     setRecentItems(response.data.slice(0, 4));

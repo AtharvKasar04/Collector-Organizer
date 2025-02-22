@@ -28,9 +28,8 @@ function ItemCard({ id, image, title, category, yearOfManufacture, purchasePrice
         if (!confirm) return;
 
         try {
-            await api.get(`/item/delete-item/${id}`, {
-                method: "DELETE",
-                credentials: "include",
+            await api.delete(`/item/delete-item/${id}`, {
+
             });
 
             alert("Item removed successfully!");

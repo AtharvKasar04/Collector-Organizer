@@ -41,7 +41,7 @@ function Collection() {
         setLoading(true);
         try {
             const response = await api.get("/item/fetch-items", {
-                withCredentials: true, // auth biscuits (cookies) hehe!!!
+
             });
             setCollection(response.data);
         } catch (error) {
@@ -104,7 +104,6 @@ function Collection() {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
-                withCredentials: true, // Include cookies for authentication
             });
 
             alert("Item added successfully!");

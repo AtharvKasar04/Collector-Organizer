@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Navbar from './Navbar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import "../assets/styles/Collection.css";
@@ -72,7 +72,7 @@ function EditItem() {
 
         try {
             const response = await api.put(`/item/edit-item/${item._id}`, formDataObj, {
-                withCredentials: true,
+
             });
 
             if (response.status === 200) {
