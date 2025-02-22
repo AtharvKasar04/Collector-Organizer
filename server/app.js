@@ -12,7 +12,7 @@ const db = require("./config/mongooseConnection");
 app.use(express.json());
 app.use(cors({
     origin: 'https://collector-organizer.vercel.app',
-    credentials: true,
+    credentials: true
 }));
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
