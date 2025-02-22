@@ -13,7 +13,7 @@ function Home() {
         e.preventDefault();
 
         try {
-            let response = await api.post(`/user/login`, { email, password }, { withCredentials: true });
+            let response = await api.post(`/user/login`, { email, password }, { withCredentials: true, credentials: "include" });
 
             if (response.status === 200) {
                 navigate('/recent-collections');

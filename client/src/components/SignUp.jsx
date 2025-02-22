@@ -15,7 +15,7 @@ function Home() {
         e.preventDefault();
 
         try {
-            let response = await api.post(`/user/register`, { username, name, email, password }, { withCredentials: true });
+            let response = await api.post(`/user/register`, { username, name, email, password }, { withCredentials: true, credentials: "inlcude" });
 
             if (response.status === 201) {
                 alert("User registered Successfully You can Login now :)");
