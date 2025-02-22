@@ -11,7 +11,7 @@ const db = require("./config/mongooseConnection");
 
 app.use(express.json());
 app.use(cors({
-    origin: 'https://collector-organizer.vercel.app/',
+    origin: 'https://collector-organizer.vercel.app',
     credentials: true,
 }));
 app.use(express.urlencoded({extended: true}));
