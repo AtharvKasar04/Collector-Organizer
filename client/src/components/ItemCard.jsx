@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import "../assets/styles/ItemCard.css"
+import api from '../api/api';
 
 function ItemCard({ id, image, title, category, yearOfManufacture, purchasePrice, purchaseDate, rarity, tags, onRemove }) {
 
@@ -27,7 +28,7 @@ function ItemCard({ id, image, title, category, yearOfManufacture, purchasePrice
         if (!confirm) return;
 
         try {
-            await fetch(`http://localhost:4000/item/delete-item/${id}`, {
+            await api.get(`/item/delete-item/${id}`, {
                 method: "DELETE",
                 credentials: "include",
             });

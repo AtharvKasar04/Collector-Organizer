@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import "../assets/styles/Collection.css"
 import ItemCard from './ItemCard'
 import axios from 'axios'
+import api from '../api/api'
 
 function Collection() {
 
@@ -39,7 +40,7 @@ function Collection() {
     const fetchUserCollection = async () => {
         setLoading(true);
         try {
-            const response = await axios.get("http://localhost:4000/item/fetch-items", {
+            const response = await api.get("/item/fetch-items", {
                 withCredentials: true, // auth biscuits (cookies) hehe!!!
             });
             setCollection(response.data);
@@ -99,7 +100,7 @@ function Collection() {
         }
 
         try {
-            const response = await axios.post("http://localhost:4000/item/create-item", data, {
+            const response = await api.post("/item/create-item", data, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },
