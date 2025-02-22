@@ -240,7 +240,7 @@ function Collection() {
                         <ItemCard
                             key={item._id}
                             id={item._id}
-                            image={`http://localhost:4000${item.imageUrl}`}
+                            image={item.image}
                             title={item.title}
                             category={item.category}
                             yearOfManufacture={item.yearOfManufacture}

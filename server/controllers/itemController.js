@@ -3,25 +3,33 @@ const userModel = require("../models/UserModel");
 const multer = require("multer");
 const path = require("path");
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads/');
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname) );
-    },
-});
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, 'uploads/');
+//     },
+//     filename: (req, file, cb) => {
+//         cb(null, Date.now() + path.extname(file.originalname) );
+//     },
+// });
 
+const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-module.exports.upload = upload.single('image'); //File upload Middleware
+module.exports.upload = upload.single('image'); 
 
 module.exports.createItem = async (req, res) => {
-    let { title, description, category, yearOfManufacture, purchasePrice, purchaseDate, tags, rarity, imageUrl } = req.body;
+    let { title, description, category, yearOfManufacture, purchasePrice, purchaseDate, tags, rarity } = req.body;
     const userId = req.user.id;
 
     try {
-        const imageUrl = req.file ? `/uploads/${req.file.filename}` : null;
+        if (!req.file) {
+            return res.status(400).json({ message: "Image is required" });
+        }
+
+        const image = {
+            data: req.file.buffer,
+            contentType: req.file.mimetype,
+        };
 
         const newItem = await collections.create({
             title,
@@ -32,7 +40,7 @@ module.exports.createItem = async (req, res) => {
             purchaseDate,
             rarity,
             tags: tags ? tags.split(',') : [],
-            imageUrl,
+            image,
             createdBy: userId
         });
         res.status(201).json(newItem);
@@ -58,7 +66,7 @@ module.exports.deleteItem = async (req, res) => {
 
 module.exports.editItem = async (req, res) => {
     const { id } = req.params; 
-    const { title, description, category, tags, imageUrl, rarity, purchaseDate, purchasePrice } = req.body; 
+    const { title, description, category, tags, rarity, purchaseDate, purchasePrice } = req.body; 
     const userId = req.user.id; 
 
     try {
@@ -74,8 +82,14 @@ module.exports.editItem = async (req, res) => {
         item.tags = tags || item.tags;
         item.purchaseDate = purchaseDate || item.purchaseDate;
         item.purchasePrice = purchasePrice || item.purchasePrice;
-        item.imageUrl = imageUrl || item.imageUrl;
         item.updatedAt = Date.now();
+
+        if (req.file) {
+            item.image = {
+                data: req.file.buffer,
+                contentType: req.file.mimetype,
+            };
+        }
 
         await item.save();
         res.status(200).json(item);
@@ -89,7 +103,15 @@ module.exports.fetchUserCollections = async (req, res) => {
 
     try {
         const items = await collections.find({ createdBy: userId });
-        res.status(200).json(items);
+
+        const formattedItems = items.map((item) => ({
+            ...item._doc,
+            image: item.image
+            ? `data:${item.image.contentType};base64,${item.image.data.toString("base64")}`
+            : null,
+        }));
+
+        res.status(200).json(formattedItems);
     } catch (error) {
         res.status(500).json({ message: "Error fetching collections", error: error.message });
     }
@@ -105,7 +127,14 @@ module.exports.searchByCategory = async (req, res) => {
             category: { $regex: new RegExp(category, 'i') } 
         });
 
-        res.status(200).json(items);
+        const formattedItems = items.map((item) => ({
+            ...item._doc,
+            image: item.image
+            ? `data:${item.image.contentType};base64,${item.image.data.toString("base64")}`
+            : null,
+        }));
+
+        res.status(200).json(formattedItems);
     } catch (error) {
         res.status(500).json({ message: "Error fetching items by category", error: error.message });
     }

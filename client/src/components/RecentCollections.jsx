@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ItemCard from './ItemCard'
 import "../assets/styles/RecentCollections.css"
 import Navbar from './Navbar'
@@ -56,7 +56,7 @@ function RecentCollections() {
                             <ItemCard
                                 key={item._id}
                                 id={item._id}
-                                image={`http://localhost:4000${item.imageUrl}`}
+                                image={item.image}
                                 title={item.title}
                                 category={item.category}
                                 yearOfManufacture={item.yearOfManufacture}

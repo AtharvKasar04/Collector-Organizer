@@ -9,7 +9,10 @@ const collectionSchema = mongoose.Schema({
     purchaseDate: String,
     rarity: String,
     tags: [String],
-    imageUrl: String,
+    image: {
+        data: Buffer,
+        contentType: String
+    },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'user'

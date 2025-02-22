@@ -1,7 +1,5 @@
-import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import "../assets/styles/ItemCard.css"
-import RAM from "../assets/images/Ram1500.jpg"
 
 function ItemCard({ id, image, title, category, yearOfManufacture, purchasePrice, purchaseDate, rarity, tags, onRemove }) {
 
@@ -46,7 +44,7 @@ function ItemCard({ id, image, title, category, yearOfManufacture, purchasePrice
     return (
         <div className="itemCard">
             <img className='itemCardIMG'
-                src={image || "https://placehold.jp/500x300.png"}
+                src={image ? image : "https://placehold.jp/500x300.png"}
                 alt={title || "Item"}
             />
 
