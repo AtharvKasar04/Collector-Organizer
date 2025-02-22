@@ -13,7 +13,7 @@ function Home() {
         e.preventDefault();
 
         try {
-            let response = await api.post(`/user/login`, { email, password }, { withCredentials: true, credentials: "include" });
+            let response = await api.post(`/user/login`, { email, password }, { withCredentials: true });
 
             if (response.status === 200) {
                 navigate('/recent-collections');
@@ -60,7 +60,7 @@ function Home() {
                         <button type="submit" className='loginButton'>Sign in</button>
                     </form>
 
-                    <p>Don't have an account? <Link to='/sign-up' id='link-SignUp'>Sign up</Link> </p>
+                    <p>Don&apos;t have an account? <Link to='/sign-up' id='link-SignUp'>Sign up</Link> </p>
                 </div>
             </div>
         </div>
