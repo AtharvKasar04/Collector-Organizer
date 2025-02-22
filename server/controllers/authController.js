@@ -45,6 +45,9 @@ module.exports.loginUser = async (req, res) => {
                 sameSite: "none",
                 path: "/"
             });
+
+            console.log("✅ Cookie set:", req.cookies.token);  // ✅ Debugging log
+
             res.status(200).json({ message: "You can Login now" });
         }
         else{
