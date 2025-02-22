@@ -41,8 +41,8 @@ module.exports.loginUser = async (req, res) => {
             let token = generateToken(foundUser);
             res.cookie("token", token, {
                 httpOnly: true,
-                sameSite: "none",
                 secure: true,
+                sameSite: "none",
                 path: "/"
             });
             res.status(200).json({ message: "You can Login now" });
@@ -56,9 +56,10 @@ module.exports.loginUser = async (req, res) => {
 module.exports.logoutUser = async (req, res) => {
     res.cookie("token", "", {
         httpOnly: true,
+        secure: true,
+        sameSite: 'none',
         expires: new Date(0),
         path: "/",
-        sameSite: 'none'
     });
     res.status(200).json({ message: "User logged out successfully!" });
 }
