@@ -52,7 +52,7 @@ function RecentCollections() {
 
                 <div className="cardsRow">
                     {recentItems.length > 0 ? (
-                        recentItems.map((item, index) => (
+                        recentItems.map((item) => (
                             <ItemCard
                                 key={item._id}
                                 id={item._id}

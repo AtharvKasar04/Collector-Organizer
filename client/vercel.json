@@ -1,7 +1,7 @@
 {
   "rewrites": [
-    { "source": "/user/:path*", "destination": "https://collector-organizer.onrender.com/user/:path" },
-    { "source": "/item/:path*", "destination": "https://collector-organizer.onrender.com/item/:path" },
+    { "source": "/user/:path*", "destination": "https://collector-organizer.onrender.com/user/:path*" },
+    { "source": "/item/:path*", "destination": "https://collector-organizer.onrender.com/item/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
