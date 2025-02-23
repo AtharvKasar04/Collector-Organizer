@@ -15,15 +15,8 @@ app.use(cookieParser());
 const allowedOrigins = ['https://collector-organizer.vercel.app', 'http://localhost:5173'];
 
 app.use(cors({
+    origin: allowedOrigins,
     credentials: true,
-    origin: (origin, callback) => {
-        console.log("ORIGIN:", origin);
-        if (allowedOrigins.includes(origin) || !origin) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    }
 }));
 
 app.use(express.urlencoded({ extended: true }));

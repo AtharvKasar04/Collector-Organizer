@@ -45,6 +45,7 @@ module.exports.loginUser = async (req, res) => {
                 httpOnly: true,
                 sameSite: "none",
                 secure: true,
+                path: "/"
             });
 
             res.status(200).json({ message: "Login successful" });
