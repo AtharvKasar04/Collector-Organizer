@@ -8,7 +8,7 @@ const ProtectedRoute = () => {
   useEffect(() => {
     const verifyAuth = async () => {
       try {
-        await api.get("/user/verify-token", { withCredentials: true });
+        await api.post("/user/verify-token", { withCredentials: true });
         setIsAuthenticated(true);
       } catch {
         setIsAuthenticated(false);
