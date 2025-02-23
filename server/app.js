@@ -11,11 +11,21 @@ const db = require("./config/mongooseConnection");
 
 app.use(express.json());
 app.use(cookieParser());
+
+const allowedOrigins = ['https://collector-organizer.vercel.app'];
+
 app.use(cors({
-    origin: 'https://collector-organizer.vercel.app',
-    credentials: true
+    credentials: true,
+    origin: (origin, callback) => {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
 }));
-app.use(express.urlencoded({extended: true}));
+
+app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static('uploads'));
 
 app.get('/', (req, res) => {
