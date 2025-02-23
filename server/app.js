@@ -17,6 +17,7 @@ const allowedOrigins = ['https://collector-organizer.vercel.app'];
 app.use(cors({
     credentials: true,
     origin: (origin, callback) => {
+        console.log(origin);
         if (allowedOrigins.includes(origin) || !origin) {
             callback(null, true);
         } else {
