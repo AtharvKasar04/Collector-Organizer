@@ -3,11 +3,11 @@ const userModel = require('../models/UserModel');
 
 module.exports = async (req, res, next) => {
     console.log("🔍 Cookies received:", req.cookies);  // ✅ Debugging log
-    res.cookie("token-temp", "Temp", {
-        httpOnly: true,
-        sameSite: "none",
-        secure: true,
-    })
+    // res.cookie("token-temp", "Temp", {
+    //     httpOnly: true,
+    //     sameSite: "none",
+    //     secure: true,
+    // })
 
     const token = req.cookies.token;  
     if (!token) {
