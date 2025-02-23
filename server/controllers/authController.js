@@ -43,8 +43,6 @@ module.exports.loginUser = async (req, res) => {
             // Set cookie with minimal required settings
             res.cookie("token", token, {
                 httpOnly: true,
-                secure: true,
-                sameSite: "none"
             });
 
             res.status(200).json({ message: "Login successful" });
