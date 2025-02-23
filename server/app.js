@@ -10,14 +10,12 @@ require("dotenv").config();
 const db = require("./config/mongooseConnection");
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(cors({
     origin: 'https://collector-organizer.vercel.app',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: 'Content-Type,Authorization',
+    credentials: true
 }));
 app.use(express.urlencoded({extended: true}));
-app.use(cookieParser());
 app.use('/uploads', express.static('uploads'));
 
 app.get('/', (req, res) => {

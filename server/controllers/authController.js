@@ -39,16 +39,15 @@ module.exports.loginUser = async (req, res) => {
     bcrypt.compare(password, foundUser.password, function(err, result){
         if (result){
             let token = generateToken(foundUser);
+            
+            // Set cookie with minimal required settings
             res.cookie("token", token, {
                 httpOnly: true,
                 secure: true,
-                sameSite: "none",
-                path: "/"
+                sameSite: "none"
             });
 
-            console.log("✅ Cookie set:", req.cookies.token);  // ✅ Debugging log
-
-            res.status(200).json({ message: "You can Login now" });
+            res.status(200).json({ message: "Login successful" });
         }
         else{
             return res.status(401).json({ message: "Email or Password invalid." });
