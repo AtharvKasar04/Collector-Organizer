@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://collector-organizer.onrender.com'
+const BASE_URL = '/'
 
 const api = axios.create({
     baseURL: BASE_URL,
