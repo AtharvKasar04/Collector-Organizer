@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://coll-9550ocpmj-atharvkasars-projects.vercel.app/',
+    baseURL: 'https://coll-o.vercel.app',
     withCredentials: true
 });
 
