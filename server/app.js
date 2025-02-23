@@ -12,7 +12,7 @@ const db = require("./config/mongooseConnection");
 app.use(express.json());
 app.use(cookieParser());
 
-const allowedOrigins = ['https://collector-organizer.vercel.app'];
+const allowedOrigins = ['https://collector-organizer.vercel.app', 'http://localhost:5173'];
 
 app.use(cors({
     credentials: true,
