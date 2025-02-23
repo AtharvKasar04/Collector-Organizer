@@ -43,7 +43,7 @@ module.exports.loginUser = async (req, res) => {
             // Set cookie with minimal required settings
             res.cookie("token", token, {
                 httpOnly: true,
-                sameSite: "strict",
+                sameSite: "none",
                 secure: true,
                 path: "/"
             });
@@ -60,7 +60,7 @@ module.exports.logoutUser = async (req, res) => {
     res.cookie("token", "", {
         httpOnly: true,
         secure: true,
-        sameSite: 'strict',
+        sameSite: 'none',
         expires: new Date(0),
         path: "/",
     });
