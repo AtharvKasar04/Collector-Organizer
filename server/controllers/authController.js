@@ -40,7 +40,7 @@ module.exports.loginUser = async (req, res) => {
         if (result){
             let token = generateToken(foundUser);
 
-            res.status(200).json({ message: "Login successful" });
+            res.status(200).json({ message: "Login successful", token });
         }
         else{
             return res.status(401).json({ message: "Email or Password invalid." });
