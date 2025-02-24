@@ -3,26 +3,32 @@ import { Navigate, Outlet } from "react-router-dom";
 import api from "../api/api";
 
 const ProtectedRoute = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(null);
 
-  useEffect(() => {
-    const verifyAuth = async () => {
-      try {
-        await api.post("/user/verify-token", { withCredentials: true });
-        setIsAuthenticated(true);
-      } catch {
-        setIsAuthenticated(false);
-      }
-    };
+    useEffect(() => {
+        const verifyAuth = async () => {
+            const token = localStorage.getItem("token");
+            if (!token) {
+                setIsAuthenticated(false);
+                return;
+            }
 
-    verifyAuth();
-  }, []);
+            try {
+                await api.get("/user/verify-token");
+                setIsAuthenticated(true);
+            } catch {
+                setIsAuthenticated(false);
+            }
+        };
 
-  if (isAuthenticated === null) {
-    return <div>Loading...</div>;
-  }
+        verifyAuth();
+    }, []);
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
+    if (isAuthenticated === null) {
+        return <div>Loading...</div>;
+    }
+
+    return isAuthenticated ? <Outlet /> : <Navigate to="/" />;
 };
 
 export default ProtectedRoute;

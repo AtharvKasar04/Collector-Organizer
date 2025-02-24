@@ -16,6 +16,7 @@ function Home() {
             let response = await api.post(`/user/login`, { email, password }, { withCredentials: true });
 
             if (response.status === 200) {
+                localStorage.setItem('token', response.data.token)
                 navigate('/recent-collections');
             }
         } catch (err) {

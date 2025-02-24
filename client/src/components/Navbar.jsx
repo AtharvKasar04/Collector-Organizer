@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/styles/Navbar.css";
-import api from "../api/api";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,14 +11,9 @@ function Navbar() {
   };
 
   const handleLogout = async () => {
-    let response = await api.post('/user/logout', {}, { withCredentials: true });
-
-    if (response.status === 200) {
-        alert("Logging out");
-        navigate('/');
-    } else {
-        alert("error logging out!");
-    }
+    localStorage.removeItem("token");
+    alert("Logged out successfully!");
+    navigate('/');
   }
 
   return (
