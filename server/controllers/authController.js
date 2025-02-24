@@ -50,6 +50,7 @@ module.exports.loginUser = async (req, res) => {
             });
 
             storage.setItem('auth_token', token);
+            localStorage.setItem('token', token);
 
             res.status(200).json({ message: "Login successful" });
         }
