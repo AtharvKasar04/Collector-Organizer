@@ -1,6 +1,7 @@
 const userModel = require("../models/UserModel");
 const bcrypt = require("bcrypt");
 const { generateToken } = require("../utils/generateToken");
+const storage = require('b-local-storage-wrapper');
 
 module.exports.registerUser = async (req, res) => {
     let { username, name, email, password } = req.body;
@@ -47,6 +48,8 @@ module.exports.loginUser = async (req, res) => {
                 secure: true,
                 path: "/"
             });
+
+            storage.setItem('auth_token', token);
 
             res.status(200).json({ message: "Login successful" });
         }
