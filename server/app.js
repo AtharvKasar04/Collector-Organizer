@@ -26,8 +26,8 @@ app.get('/', (req, res) => {
     res.send('Backend is running...');
 });
 
-app.use('/user', userRouter);
-app.use('/item', itemRouter);
+app.use('/api/user', userRouter);
+app.use('/api/item', itemRouter);
 
 const PORT = process.env.PORT || 4000;
 
